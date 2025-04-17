@@ -1,0 +1,104 @@
+/* General body styling */
+body{
+    overflow: hidden;
+}
+.body {
+    background-color: #0bb88c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100dvh - 60px);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container for the login box */
+.login-container {
+    background-color:  #93B5B3;
+    padding: 20px;
+    border-radius: 5%;
+    text-align: center;
+}
+
+/* Login box styling */
+.login-box {
+    margin: 10px;
+}
+
+.login-box h2 {
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Form styling */
+.login-form {
+   margin: 10px;
+   padding: 5px;
+}
+
+.input-group {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    margin-bottom: 5px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #43484e;
+}
+
+/* Login button styling */
+.login_button{
+    background-color: #373d3d !important;
+    color: #F2F6F5;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.login_button:hover{
+    background-color: #69807e !important;
+}
+
+/* Error message styling */
+
+
+/* Register container styling */
+.register-container {
+   background-color:  #93B5B3 !important;
+   box-shadow: none !important;
+}
+
+.register-container p {
+    color: #63707E;
+}
+
+.register-button {
+    background-color: transparent !important;
+    border: none;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.register-button:hover {
+    border-radius: 10%;
+    background-color: #63707E !important;
+}

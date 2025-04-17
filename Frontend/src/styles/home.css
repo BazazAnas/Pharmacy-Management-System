@@ -1,0 +1,42 @@
+/* colours
+#F2F6F5
+#C8DAD3
+#93B5B3
+#63707E 
+*/
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial, sans-serif; 
+}
+       
+.content {
+display: flex;
+height: calc(100dvh - 60px); 
+}
+
+.left, .right {
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+}
+
+.left {
+background-color: #C8DAD3;
+font-size: 36px;
+font-weight: bold;
+}
+
+.right {
+background-color: #93B5B3;
+font-size: 18px;
+line-height: 1.6;
+}
+ 
