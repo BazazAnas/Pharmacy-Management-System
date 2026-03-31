@@ -285,7 +285,7 @@ body {
 .right_inner {
     position: relative;
     z-index: 2;
-    max-width: 540px;
+    max-width: 700px;
 }
 
 .right_eyebrow {

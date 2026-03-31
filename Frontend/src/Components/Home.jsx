@@ -32,7 +32,7 @@ function Home() {
                     <div className="right_inner">
                         <p className="right_eyebrow">About the Platform</p>
                         <h2 className="right_heading">
-                            The complete operating system<br />
+                            The complete system<br />
                             for your <span>pharmacy</span>.
                         </h2>
 
