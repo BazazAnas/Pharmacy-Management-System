@@ -1,41 +1,167 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    }
-    nav {
+}
+
+/* ─── Navbar ────────────────────────────────────────────────────── */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    height: 60px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: #63707E;
-    padding: 10px 20px;
-    color: white;     
-    }
-    
-    nav .logo {
-    font-size: 24px;            
-    font-weight: bold;            
-    }                
-    
-    nav .menu {
-    display: flex;
-    gap: 15px;
-    }
-    
-    nav .menu button {
-    background-color: #555;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    }
-    
-    nav .menu button:hover {
-    background-color: #777;
+    justify-content: space-between;
+    padding: 0 40px;
+    background: rgba(7, 13, 26, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+    animation: navSlideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes navSlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
     }
 
-a, a:link, a:visited{
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ─── Logo ──────────────────────────────────────────────────────── */
+.navbar_logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
     text-decoration: none;
-    color: white;
-}    
+    transition: opacity 0.2s ease;
+}
+
+.navbar_logo:hover {
+    opacity: 0.85;
+}
+
+.navbar_logo:hover .navbar_logo_icon {
+    box-shadow: 0 0 28px rgba(0, 212, 200, 0.55);
+    transform: scale(1.08) rotate(-4deg);
+}
+
+.navbar_logo_icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #00d4c8, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 0 18px rgba(0, 212, 200, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: iconPulse 3s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 18px rgba(0, 212, 200, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(0, 212, 200, 0.55);
+    }
+}
+
+.navbar_logo_text {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.175rem;
+    font-weight: 700;
+    color: #e8f0fe;
+    letter-spacing: -0.01em;
+}
+
+.navbar_logo_text span {
+    color: #00d4c8;
+}
+
+/* ─── Menu ──────────────────────────────────────────────────────── */
+.navbar_menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Login button */
+.navbar_btn_login {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0d1b2e;
+    background: linear-gradient(135deg, #00d4c8, #3b82f6);
+    border: none;
+    padding: 8px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar_btn_login::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.navbar_btn_login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 212, 200, 0.28);
+}
+
+.navbar_btn_login:hover::after {
+    opacity: 1;
+}
+
+.navbar_btn_login:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Ensure button text stays above ::after overlay */
+.navbar_btn_login span,
+.navbar_btn_login {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Links ─────────────────────────────────────────────────────── */
+a,
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0 20px;
+    }
+}
