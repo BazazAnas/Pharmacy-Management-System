@@ -30,13 +30,11 @@
 button{
     margin-top: 5px;
     padding: 10px;
-    background-color: rgb(189, 76, 76);
     border-radius: 10%;
 }
 
 button:hover{
     cursor: pointer;
-    background-color: rgb(252, 40, 40);
 }
 
 h1{
