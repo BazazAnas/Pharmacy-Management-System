@@ -1,103 +1,379 @@
-/* General body styling */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ─── Body ──────────────────────────────────────────────────────── */
+body {
+    overflow: hidden;
+}
+
 .body {
-    background-color: #F2F6F5;
+    background-color: #070d1a;
+    background-image:
+        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 20% 50%, rgba(59, 130, 246, 0.07) 0%, transparent 60%);
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100dvh - 60px);
-    margin: 0;
-    font-family: Arial, sans-serif;
+    width: 100vw;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Container for the register box */
+/* Animated grid */
+.body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+    background-size: 52px 52px;
+    animation: gridDrift 18s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes gridDrift {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 52px 52px;
+    }
+}
+
+/* ─── Register Container ────────────────────────────────────────── */
 .register-container {
-    background-color: #C8DAD3;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+    position: relative;
+    z-index: 2;
+    animation: cardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Register box styling */
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(32px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ─── Register Box ──────────────────────────────────────────────── */
 .register-box {
+    background: #111f33;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    padding: 44px 48px 36px;
+    width: 420px;
+    max-width: 94vw;
+    box-shadow: 0 4px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top shimmer — indigo tint to differentiate from login */
+.register-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #6366f1 40%, #3b82f6 70%, transparent 100%);
+    animation: shimmer 3.5s ease-in-out infinite;
+    background-size: 200% auto;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Orb glow */
+.register-box::after {
+    content: '';
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, transparent 70%);
+    top: -80px;
+    right: -80px;
+    pointer-events: none;
+}
+
+/* Box */ 
+.box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     text-align: center;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s both;
+    gap: 16px;
 }
 
-.register-box h2 {  
-     color: #63707E;
-    margin-bottom: 10px;
-}
-.register-box p {
-    color: #63707E;
-    margin-bottom: 20px;
+/* Icon */
+.register_icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.35);
+    margin-bottom: 24px;
+    animation: iconPulse 3s ease-in-out infinite;
 }
 
-/* Form styling */
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 22px rgba(99, 102, 241, 0.35);
+    }
+
+    50% {
+        box-shadow: 0 0 38px rgba(99, 102, 241, 0.6);
+    }
+}
+
+.register-box h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: #e8f0fe;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    animation: fadeUp 0.6s 0.15s both;
+}
+
+.register-box>p,
+.register-box .register-subtitle {
+    font-size: 0.875rem;
+    color: #8ba3c7;
+    font-weight: 300;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s 0.22s both;
+}
+
+/* ─── Form ──────────────────────────────────────────────────────── */
 .register-form {
     display: flex;
     flex-direction: column;
+    gap: 0;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
     text-align: left;
+    animation: fadeUp 0.6s both;
+}
+
+.input-group:nth-child(1) {
+    animation-delay: 0.28s;
+}
+
+.input-group:nth-child(2) {
+    animation-delay: 0.36s;
 }
 
 .input-group label {
-    color: #63707E;
-    margin-bottom: 5px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #8ba3c7;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     display: block;
 }
 
 .input-group input {
+    background: #0d1b2e;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    color: #e8f0fe;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #93B5B3;
-    border-radius: 5px;
-    background-color: #F2F6F5;
-    color: #63707E;
-    font-size: 16px;
+}
+
+.input-group input::placeholder {
+    color: #445a7a;
 }
 
 .input-group input:focus {
-    outline: none;
-    border-color: #63707E;
+    border-color: #6366f1;
+    background: #111f33;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
 }
 
-/* Register button styling */
+/* ─── Register Button ───────────────────────────────────────────── */
 .Register-button {
-    background-color: #303333;
-    color: #F2F6F5;
-    padding: 10px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #e8f0fe;
+    background: linear-gradient(135deg, #6366f1, #3b82f6);
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 10px;
+    padding: 13px 24px;
+    width: 100%;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 8px;
+    letter-spacing: 0.01em;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s 0.44s both;
+}
+
+.Register-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #3b82f6, #00d4c8);
+    opacity: 0;
+    transition: opacity 0.25s ease;
 }
 
 .Register-button:hover {
-    background-color: #64696e !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(99, 102, 241, 0.3);
 }
 
-/* Login container styling */
+.Register-button:hover::after {
+    opacity: 1;
+}
+
+.Register-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.Register-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Error ─────────────────────────────────────────────────────── */
+.register-error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(244, 63, 94, 0.08);
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    border-left: 3px solid #f43f5e;
+    color: #f87171;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    margin-top: 14px;
+    animation: errorSlide 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.register-error::before {
+    content: '✕';
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+@keyframes errorSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Login Link Container ──────────────────────────────────────── */
 .login_container {
-    margin-top: 15px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(99, 102, 241, 0.12);
+    text-align: center;
+    animation: fadeUp 0.6s 0.52s both;
 }
 
 .login_container p {
-    color: #63707E;
+    font-size: 0.875rem;
+    color: #445a7a;
 }
 
 .login-button {
-    background-color: transparent !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6366f1;
+    background: transparent;
     border: none;
-    color: #1a1b1b;
     cursor: pointer;
-    font-size: 16px;
+    padding: 0 2px;
+    position: relative;
+    transition: color 0.2s ease;
 }
 
-.login-button:hover{
-    background-color: #64696e !important;
+.login-button::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #6366f1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-button:hover {
+    color: #3b82f6;
+}
+
+.login-button:hover::after {
+    transform: scaleX(1);
+    background: #3b82f6;
+}
+
+/* ─── Shared Keyframes ──────────────────────────────────────────── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
