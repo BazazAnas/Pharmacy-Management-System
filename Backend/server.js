@@ -70,7 +70,7 @@ app.post("/login", async (req, res) => {
         if (userCheck.rows.length === 0) { return res.status(401).json({ error: "Invalid Cridentails" }) }
         const user = userCheck.rows[0];
         const validPassword = await bcrypt.compare(password, user.password)
-        if (!validPassword) { return res.status(401).json({ error: "Invalid Password" }) }
+        if (!validPassword) { return res.status(401).json({ error: "Invalid Cridentials" }) }
         req.session.userId = user.id;
         res.status(200).json({ message: 'Successful request' })
         console.log("logged in")
